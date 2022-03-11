@@ -16,7 +16,8 @@
     "socket.io": "^4.4.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "dev": "code client && concurrently \"nodemon server.js\" \"yarn --cwd client start\""
   },
   "author": "JRaynovic",
   "license": "ISC"
