@@ -4,6 +4,7 @@ const {Server} = require('socket.io')
 const cors = require('cors')
 const { typeDefs } = require('./Schema/typeDefs')
 const { resolvers } = require('./Schema/resolvers')
+const sequelize = require('./database')
 
 async function startApolloServer(typeDefs, resolvers) {
 
@@ -32,6 +33,8 @@ async function startApolloServer(typeDefs, resolvers) {
       })
 
     const port = 5001
+
+    sequelize.sync().then(()=> console.log('db ready'))
 
     const server = new ApolloServer({ typeDefs, resolvers })
 
